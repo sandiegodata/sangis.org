@@ -1,0 +1,11 @@
+identity:
+    creator: eric@sandiegodata.org
+    dataset: landuse
+    id: a2RUFy
+    revision: '1'
+    source: sangis.org
+    subset: null
+    variation: orig
+build:
+    sources:
+        currentuse: http://rdw.sandag.org/file_store/Land%20Use/LANDUSE_CURRENT.zip

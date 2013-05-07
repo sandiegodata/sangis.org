@@ -1,0 +1,9 @@
+"table","column","is_pk","is_fk","type","default","description"
+"currentuse","ogc_fid",,,"INTEGER",,
+"currentuse","geometry",,,"POLYGON",,
+"currentuse","lu",,,"INTEGER",,
+"currentuse","landuse",,,"TEXT",,
+"currentuse","group",,,"TEXT",,
+"currentuse","city",,,"TEXT",,
+"currentuse","neighborhood",,,"TEXT",,
+"currentuse","planning",,,"TEXT",,
