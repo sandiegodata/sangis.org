@@ -82,6 +82,8 @@ class Bundle(BuildBundle):
         for area, where, is_in in segment_points(places, 
                                                  "SELECT *, AsText(geometry) AS wkt FROM places"):
 
+
+
             count = 0;
 
             print where
@@ -118,6 +120,7 @@ class Bundle(BuildBundle):
         all_parcels = self.partitions.find(table='parcels', space='all')
         lr = self.init_log_rate(1000)
         for place in places.query("SELECT * FROM places"):
+
             split_parcels = self.partitions.find_or_new_geo(table='parcels', space=place['code'])
             
             with split_parcels.database.inserter() as ins:

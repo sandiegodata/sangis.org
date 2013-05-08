@@ -44,7 +44,7 @@ class Bundle(BuildBundle):
         try: placep.query("DELETE FROM places")
         except: pass
 
-        with placep.database.inserter() as ins:
+        with placep.database.inserter('places') as ins:
             for p in self.partitions:
                 
                 if not p.identity.name.endswith('orig'):
@@ -53,17 +53,20 @@ class Bundle(BuildBundle):
                 table = str(p.identity.table)
                 city = None
                 
+                mapping = col_map.get( (table,"name"), False )
+                group_name = mapping['group']
+                
                 for i, row in enumerate(p.database.query("""
-                SELECT *, 
-                X(Centroid(geometry)) AS x, 
-                Y(Centroid(geometry)) as y,
-                X(Transform(Centroid(geometry), 4326)) AS lon, 
-                Y(Transform(Centroid(geometry), 4326)) as lat,
-                AsText(Transform(CastToMultiPolygon(geometry), 4326)) AS wkt 
-                FROM {}
-                """.format(table))):
+                SELECT *,
+                AsText(Transform(geo, 4326)) AS wkt,
+                X(Transform(Centroid(geo), 4326)) AS lon, 
+                Y(Transform(Centroid(geo), 4326)) as lat,
+                Area(geo) as areax
+                FROM ( SELECT *, CastToMultiPolygon(GUnion(Buffer(geometry,0.0))) as geo FROM {} GROUP BY {})
+                """.format(table, group_name))):
                     drow = dict(row)
-                      
+
+
                     for oc in ('code','name'):
                         mapping = col_map.get( (table,str(oc)), False )
     
@@ -76,6 +79,7 @@ class Bundle(BuildBundle):
                         
                         drow[oc] = v
     
+                    drow['area'] = drow['areax']
                      
                     drow['name'] = drow['name'].title()
                     
@@ -89,11 +93,18 @@ class Bundle(BuildBundle):
                         
                     drow['type'] = type_
                     drow['city'] = city    
-                        
-                    #if type != 'city':
-                    #    print row['wkt']
+
                         
                     ins.insert(drow)
+
+
+    def update_places(self):
+
+        temp = self.partitions.find(grain='temp', tables=('places'))
+
+        # Buffer rebuilds the geometry to get rid of non-noded intersections. 
+        for row in temp.query("SELECT name, code, GUnion(Buffer(geometry,0.0)) FROM places GROUP BY city, code"):
+            print row
 
     
 import sys
