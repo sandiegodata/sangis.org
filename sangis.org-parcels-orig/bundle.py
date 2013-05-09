@@ -36,6 +36,16 @@ class Bundle(BuildBundle):
 
         return True
 
+    def get_zone(self):
+        """Return the State Plane zone, and the SRS, for San Diego. """
+        
+        _, places = self.library.dep('places')
+        
+        
+        sd = places.query("SELECT * FROM places where code = 'SD' LIMIT 1").first()
+        
+        return sd['spsrs']
+  
     def split_docs(self):
         """Split the original parcel records into parcels, with a few extra fields, and parcel docs, 
         with just the situs and assessors information"""
@@ -48,15 +58,11 @@ class Bundle(BuildBundle):
         
         p_ins =  parcels.database.inserter()
         pd_ins =  parceldocs.database.inserter()
+             
+        # Get the stateplane SRS number
+        spsrs = self.get_zone()
                 
-        for row in parcels_o.query("""
-            SELECT *, 
-            shape_area AS area,
-            x_coord AS x, y_coord AS y,
-            X(Transform(Centroid(geometry), 4326)) AS lon, Y(Transform(Centroid(geometry), 4326)) AS lat,
-            AsText(geometry) as wkt
-            FROM parcels_orig
-        """):
+        for row in parcels_o.query(""" SELECT *, AsText(Transform(geometry, {spsrs})) as wkt FROM parcels_orig""".format(spsrs=spsrs)):
         
             row = dict(row)
         
@@ -65,6 +71,15 @@ class Bundle(BuildBundle):
             p_ins.insert(row)
             pd_ins.insert(row)            
         
+        
+        # Do this  seperately because they all depend on the geomoetry being tansformed in the previous query
+        parcels.query("""
+        UPDATE parcels SET 
+            area = Area(geometry),
+            x = X(Centroid(geometry)), y = Y(Centroid(geometry)),
+            lon = X(Transform(Centroid(geometry), 4326)), lat = Y(Transform(Centroid(geometry), 4326));
+        """)
+    
 
     def add_places(self):      
         from databundles.geo.util import segment_points
@@ -80,15 +95,12 @@ class Bundle(BuildBundle):
         _, places = self.library.dep('places')
         
         for area, where, is_in in segment_points(places, 
-                                                 "SELECT *, AsText(geometry) AS wkt FROM places"):
-
-
+                                                 "SELECT *, AsText(geometry) AS wkt FROM places ORDER BY area ASC"):
 
             count = 0;
-
-            print where
+            self.log("Area {}".format(area['name']))
             with parcels.database.updater() as upd:
-                for parcel in parcels.query("SELECT *, AsText(geometry) as wkt FROM parcels WHERE {}".format(where)):
+                for parcel in parcels.query("SELECT *, AsText(geometry) as wkt FROM parcels  WHERE {} AND {} IS NULL ".format(where, area['type'])):
                     count +=1
                     
                     parcel = dict(parcel)
@@ -131,7 +143,46 @@ class Bundle(BuildBundle):
                     lr('Split parcels {} {}'.format(place['type'], place['code']))
                     ins.insert(parcel)
             
-   
+            
+    def group_parcels(self):
+        import osr, ogr
+            
+        groups = set()
+        
+        all_parcels = self.partitions.find(table='parcels', space='all')
+        where_template = ""
+        for p1 in all_parcels.query("""SELECT *, AsText(geometry) AS wkt  FROM parcels WHERE asr_zone = 6 ORDER BY area"""):
+            p1g = ogr.CreateGeometryFromWkt(p1['wkt'])
+            p1b = p1g.Buffer(1000)
+            e = p1b.GetEnvelope()
+        
+            count = 0
+            
+            q = """
+                SELECT * FROM parcels 
+                WHERE asr_zone = 6 AND OGC_FID != {id}
+                AND x BETWEEN {x1} AND {x2} AND y BETWEEN {y1} and {y2}
+                ORDER BY area""".format(id=p1['OGC_FID'], x1=e[0], x2=e[1], y1=e[2], y2=e[3])
+            
+            self.log(q)
+            
+            for p2 in all_parcels.query(q):
+                
+                count += 1
+                p2g = ogr.CreateGeometryFromWkt(p1['wkt'])
+                
+                if p1g.Distance(p2g) < 300:
+                    id1  = p1g.OGC_FID
+                    id2  = p2g.OGC_FID
+                    
+                    if id1 > id2:
+                        id1, id2 = id2, id1
+                    
+                    groups.add( (id1, id2) )
+                    
+            self.log("Checked {} Groups: {}".format(count, len(groups)))
+                    
+        
 import sys
 
 if __name__ == '__main__':

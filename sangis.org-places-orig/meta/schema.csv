@@ -5,7 +5,12 @@
 "places","code",,,,,,,,,1,,"TEXT",,
 "places","name",,,,,1,,,,,1,"TEXT",,
 "places","geoid",,,,,,1,,,,,"TEXT",,
-"places","lon",,,,,,,1,,,,"REAL",,
-"places","lat",,,,,,,1,,,,"REAL",,
+"places","lon",,,,,,,1,,,,"REAL",,"Longitude of centroid"
+"places","lat",,,,,,,1,,,,"REAL",,"Latitude of centroid"
 "places","wkt",,,,,,,,,,,"MULTIPOLYGON",,
 "places","area",,,,,,,,,,,"REAL",,
+"places","origsrs",,,,,,,,,,,"TEXT",,
+"places","spsrs",,,,,,,,,,,"TEXT",,
+"places ","wgsenvelope",,,,,,,,,,,"TEXT",,"Envelope in WGS84 lon/lat"
+"places ","utmenvelope",,,,,,,,,,,"TEXT",,"Envelope in the NAD83/SPCS/UTM SRS"
+"places","aa",,,,,,,,,,,"TEXT",,"Analysis Area in json"
