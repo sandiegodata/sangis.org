@@ -1,9 +1,0 @@
-"table","outcol","incol","group"
-"city_orig","code","code",
-"city_orig","name","name","name"
-"sd_community_orig","code","SDC{cpcode}",
-"sd_community_orig","name","cpname","cpname"
-"sd_council_orig","code","SDD{district}",
-"sd_council_orig","name","District {district}","district"
-"sd_neighborhood_orig","code","SDN{i}",
-"sd_neighborhood_orig","name","name","name"

@@ -36,10 +36,10 @@ build:
         spzones: clarinova.com-extents-2012-7ba4-spzones
     source_srs: 2230
     sources:
-        city: http://rdw.sandag.org/file_store/Jurisdiction/Municipal_Boundaries.zip
-        sd_community: http://rdw.sandag.org/file_store/Community/Community_Plan_SD.zip
-        sd_council: http://rdw.sandag.org/file_store/District/Council_Districts.zip
-        sd_neighborhood: http://rdw.sandag.org/file_store/Community/Neighborhoods_SD.ZIP
+        cities: http://rdw.sandag.org/file_store/Jurisdiction/Municipal_Boundaries.zip
+        sd_communities: http://rdw.sandag.org/file_store/Community/Community_Plan_SD.zip
+        sd_councils: http://rdw.sandag.org/file_store/District/Council_Districts.zip
+        sd_neighborhoods: http://rdw.sandag.org/file_store/Community/Neighborhoods_SD.ZIP
 identity:
     creator: eric@sandiegodata.org
     dataset: places
@@ -49,11 +49,10 @@ identity:
     source: sangis.org
     variation: orig
 partitions:
-- sangis.org-places-orig-429e-city_orig
-- sangis.org-places-orig-429e-sd_community_orig
-- sangis.org-places-orig-429e-sd_council_orig
-- sangis.org-places-orig-429e-sd_neighborhood_orig
-- sangis.org-places-orig-429e-places
+- sangis.org-places-orig-429e-cities
+- sangis.org-places-orig-429e-sd_communities
+- sangis.org-places-orig-429e-sd_councils
+- sangis.org-places-orig-429e-sd_neighborhoods
 views:
     places:
         places_norm: SELECT code as id, name, AsText(geometry) as wkt, Area(geometry)
