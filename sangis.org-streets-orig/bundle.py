@@ -54,21 +54,7 @@ class Bundle(BuildBundle):
         with open(self.filesystem.path('meta','zips.yaml'), 'w') as f:
             yaml.dump(zips, f, indent=4, default_flow_style=False)
             
-            
-            
-    def prepare(self):
-        '''Create the datbase and load the schema from a file, if the file exists. '''
-        from databundles.partition import PartitionIdentity
-      
-        if not self.database.exists():
-            self.database.create()
-
-        if self.config.build.get('schema_file', False):
-            with open(self.filesystem.path(self.config.build.schema_file), 'rbU') as f:
-                self.schema.schema_from_file(f)      
-                self.schema.create_tables()     
-
-        return True
+  
     
     ### Build the final package
 
