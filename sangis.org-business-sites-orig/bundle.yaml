@@ -27,9 +27,6 @@ build:
 extracts:
     images:
         description: A grayscale GeoTIFF density map.
-        function: extract_image
-        name: sandiego-businesses.tiff
-        title: San Diego business density map
         each:
         -   -   type: assault
             -   type: homocide
@@ -42,6 +39,9 @@ extracts:
             -   type: dui
             -   type: property
             -   type: violent
+        function: extract_image
+        name: sandiego-businesses.tiff
+        title: San Diego business density map
 identity:
     creator: eric@sandiegodata.org
     dataset: business
@@ -51,4 +51,5 @@ identity:
     source: sangis.org
     subset: sites
     variation: orig
-partitions: []
+partitions:
+- sangis.org-business-sites-orig-429e-businesses

@@ -32,8 +32,6 @@ about:
     - gov-infrastructure
     title: Municipal Boundaries
 build:
-    dependencies:
-        spzones: clarinova.com-extents-2012-7ba4-spzones
     source_srs: 2230
     sources:
         cities: http://rdw.sandag.org/file_store/Jurisdiction/Municipal_Boundaries.zip

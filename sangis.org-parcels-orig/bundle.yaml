@@ -1,6 +1,4 @@
 build:
-    dependencies:
-        places: clarinova.com-places-casd-7ba4-places
     sources:
         parcels: http://rdw.sandag.org/file_store/Parcel/Parcels.zip
 identity:

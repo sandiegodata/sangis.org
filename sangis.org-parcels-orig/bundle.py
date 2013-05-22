@@ -10,22 +10,13 @@ class Bundle(BuildBundle):
     def __init__(self,directory=None):
         self.super_ = super(Bundle, self)
         self.super_.__init__(directory)
- 
-    def get_zone(self):
-        """Return the State Plane zone, and the SRS, for San Diego. """
-        _, places = self.library.dep('places')
-        sd = places.query("SELECT * FROM places where code = 'SD' LIMIT 1").first()
-        return sd['spsrs']
     
     def build(self):
         from databundles.identity import PartitionIdentity
 
-        
-        srs = self.get_zone()
-
         for name, url in self.config.build.sources.items():
             pid = PartitionIdentity(self.identity, table=name)
-            p = self.partitions.new_geo_partition(pid, shape_file=url, t_srs=srs)
+            p = self.partitions.new_geo_partition(pid, shape_file=url)
         
         with open (self.filesystem.path('meta','orig_schema.csv'), 'wb') as f:
             self.schema.as_csv(f)

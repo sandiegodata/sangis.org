@@ -55,32 +55,21 @@ class Bundle(BuildBundle):
             yaml.dump(zips, f, indent=4, default_flow_style=False)
             
   
-    
-    ### Build the final package
 
-    def load_shapefile(self, url, table_name):
-        from databundles.identity import PartitionIdentity
- 
-        pid = PartitionIdentity(self.identity, table=table_name)
-           
-        try: shape_partition = self.partitions.find(pid)
-        except: shape_partition = None # Fails with ValueError because table does not exist. 
-        
-        if not shape_partition:
-            shp_file= self.filesystem.download_shapefile(url)
-            shape_partition = self.partitions.new_geo_partition( pid, shp_file)
 
     def build(self):
-
+        from databundles.identity import PartitionIdentity
+        
         self.load_codes()
-
-        def progress_f(i):
-            if i%10000 == 0:
-                self.log("Converted {} records".format(i))  
-                
-        self.load_shapefile(self.config.build.sources.addresses, 'addresses')
-        self.load_shapefile(self.config.build.sources.roads, 'roads')
-        self.load_shapefile(self.config.build.sources.intersections, 'intersections')
+ 
+        self.partitions.new_geo_partition( PartitionIdentity(self.identity, table='addresses'), 
+                                           shape_file = self.config.build.sources.addresses)
+                                           
+        self.partitions.new_geo_partition( PartitionIdentity(self.identity, table='roads'),
+                                           shape_file = self.config.build.sources.roads)
+                                           
+        self.partitions.new_geo_partition( PartitionIdentity(self.identity, table='intersections'),
+                                            shape_file = self.config.build.sources.intersections)
                 
         self.add_indexes()
                 

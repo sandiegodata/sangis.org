@@ -16,7 +16,7 @@ class Bundle(BuildBundle):
         from databundles.identity import PartitionIdentity
 
         pid = PartitionIdentity(self.identity, table='businesses')
-        gp = self.partitions.new_geo_partition(pid, self.config.build.sources.businesses)
+        gp = self.partitions.new_geo_partition(pid, shape_file=self.config.build.sources.businesses)
 
         return True
         
