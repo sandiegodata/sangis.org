@@ -19,8 +19,6 @@ class Bundle(BuildBundle):
             self.schema.as_csv(f)
             
         return True
-    
-
 
     def build(self):
         from databundles.identity import PartitionIdentity

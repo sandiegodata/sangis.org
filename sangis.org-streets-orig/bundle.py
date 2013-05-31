@@ -25,7 +25,6 @@ class Bundle(BuildBundle):
         
         url = "http://maps.google.com/maps/api/geocode/json?address={zip}+CA&components=city&sensor=false"
         
-        _, addresses = self.library.dep('addresses')
         addresses = self.partitions.find_or_new(table='addresses')
 
         zips = {}
@@ -145,13 +144,7 @@ class Bundle(BuildBundle):
         p = self.partitions.find(table='intersections')
         p.database.query('CREATE INDEX IF NOT EXISTS intr_interid_idx ON intersections (interid);')       
 
-                
-    def test_geo(self):
-        
-        _, blocks = self.library.dep('blocks')
-        
-        for row in p.query("select AsText(geometry) from addresses limit 5"):
-            print row
+
 
 import sys
 
