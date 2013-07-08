@@ -9,5 +9,7 @@ identity:
     revision: 1
     source: sangis.org
     variation: orig
+    vid: a2NZ6j/001
+    vname: sangis.org-parcels-orig-429e-r1
 partitions:
-- sangis.org-parcels-orig-429e-parcels
+- sangis.org-parcels-orig-429e.parcels

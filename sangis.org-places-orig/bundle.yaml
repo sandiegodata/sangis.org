@@ -46,11 +46,13 @@ identity:
     revision: 1
     source: sangis.org
     variation: orig
+    vid: a2RX3O/001
+    vname: sangis.org-places-orig-429e-r1
 partitions:
-- sangis.org-places-orig-429e-cities
-- sangis.org-places-orig-429e-sd_communities
-- sangis.org-places-orig-429e-sd_councils
-- sangis.org-places-orig-429e-sd_neighborhoods
+- sangis.org-places-orig-429e.cities
+- sangis.org-places-orig-429e.sd_communities
+- sangis.org-places-orig-429e.sd_councils
+- sangis.org-places-orig-429e.sd_neighborhoods
 views:
     places:
         places_norm: SELECT code as id, name, AsText(geometry) as wkt, Area(geometry)

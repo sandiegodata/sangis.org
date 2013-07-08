@@ -39,7 +39,9 @@ identity:
     revision: 1
     source: sangis.org
     variation: orig
+    vid: a2MCi4/001
+    vname: sangis.org-streets-orig-429e-r1
 partitions:
-- sangis.org-streets-orig-429e-addresses
-- sangis.org-streets-orig-429e-roads
-- sangis.org-streets-orig-429e-intersections
+- sangis.org-streets-orig-429e.addresses
+- sangis.org-streets-orig-429e.roads
+- sangis.org-streets-orig-429e.intersections

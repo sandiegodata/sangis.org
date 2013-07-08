@@ -9,5 +9,7 @@ identity:
     revision: 1
     source: sangis.org
     variation: orig
+    vid: a2RUFy/001
+    vname: sangis.org-landuse-orig-429e-r1
 partitions:
-- sangis.org-landuse-orig-429e-currentuse_orig
+- sangis.org-landuse-orig-429e.currentuse_orig

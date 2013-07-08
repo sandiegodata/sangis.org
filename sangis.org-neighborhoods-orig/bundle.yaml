@@ -10,9 +10,11 @@ identity:
     revision: 1
     source: sangis.org
     variation: orig
+    vid: a2Ol01/001
+    vname: sangis.org-neighborhoods-orig-429e-r1
 partitions:
-- sangis.org-neighborhoods-orig-429e-neighborhoods.sd
-- sangis.org-neighborhoods-orig-429e-communities.sd
+- sangis.org-neighborhoods-orig-429e.neighborhoods.sd
+- sangis.org-neighborhoods-orig-429e.communities.sd
 views:
     communities:
         communities_norm: SELECT objectid as id, cpname as name, AsText(geometry)
