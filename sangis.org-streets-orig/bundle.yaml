@@ -25,10 +25,11 @@ about:
 build:
     codes: meta/codes.yaml
     schema_file: meta/schema.csv
+    dependencies:
+        neighborhoods: sangis.org-neighborhoods-orig-429e.neighborhoods
     sources:
         addresses: http://rdw.sandag.org/file_store/Address/Address_APN.zip
         intersections: http://rdw.sandag.org/file_store/Transportation/Roads_Intersection.zip
-        neighborhoods: sangis.org-neighborhoods-orig-429e-neighborhoods
         roads: http://rdw.sandag.org/file_store/Transportation/Roads_All.zip
     zips: meta/zips.yaml
 identity:

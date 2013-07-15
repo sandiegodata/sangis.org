@@ -21,7 +21,6 @@ class Bundle(BuildBundle):
 
         pid = PartitionIdentity(self.identity, table='street_lights')
    
- 
         shape_partition = self.partitions.new_geo_partition( pid, shape_file = url)
 
         return True

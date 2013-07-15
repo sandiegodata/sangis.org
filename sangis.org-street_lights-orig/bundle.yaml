@@ -30,7 +30,7 @@ build:
     dependencies:
         codes: sangis.org-streets-orig-429e
         extents: clarinova.com-extents-2012-7ba4
-        geoaddresses: clarinova.com-geocode-sandiego-orig-429e-addresses
+        geoaddresses: clarinova.com-geocode-sandiego-orig-429e.addresses
     url: http://rdw.sandag.org/file_store/Miscellaneous/Street_Light.zip
 extracts:
     csv:
@@ -53,5 +53,7 @@ identity:
     revision: 1
     source: sangis.org
     variation: orig
+    vid: a2mriW/001
+    vname: sangis.org-street_lights-orig-7ba4-r1
 partitions:
-- sangis.org-street_lights-orig-7ba4-street_lights
+- sangis.org-street_lights-orig-7ba4.street_lights
