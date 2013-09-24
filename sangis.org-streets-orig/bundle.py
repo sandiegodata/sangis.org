@@ -57,18 +57,14 @@ class Bundle(BuildBundle):
 
 
     def build(self):
-        from databundles.identity import PartitionIdentity
-        
+   
         self.load_codes()
  
-        self.partitions.new_geo_partition( PartitionIdentity(self.identity, table='addresses'), 
-                                           shape_file = self.config.build.sources.addresses)
+        self.partitions.new_geo_partition(table='addresses', shape_file = self.config.build.sources.addresses)
                                            
-        self.partitions.new_geo_partition( PartitionIdentity(self.identity, table='roads'),
-                                           shape_file = self.config.build.sources.roads)
+        self.partitions.new_geo_partition(table='roads',shape_file = self.config.build.sources.roads)
                                            
-        self.partitions.new_geo_partition( PartitionIdentity(self.identity, table='intersections'),
-                                            shape_file = self.config.build.sources.intersections)
+        self.partitions.new_geo_partition(table='intersections',shape_file = self.config.build.sources.intersections)
                 
         self.add_indexes()
                 
@@ -79,13 +75,15 @@ class Bundle(BuildBundle):
         
         codes = self.filesystem.load_yaml(self.config.build.codes)
         
-        self.database.query("DELETE FROM codes")
+        p = self.partitions.find_or_new(table='codes')
+        
+        p.database.query("DELETE FROM codes")
         
         #
         # Load the codes copied from the metadata ( The PDF file for the dataset )
         # 
         
-        with self.database.inserter("codes") as ins:
+        with p.database.inserter("codes") as ins:
             for group, s in codes.codes.items():
                 for k, v in s.items():
                     ins.insert({
@@ -102,7 +100,7 @@ class Bundle(BuildBundle):
                     
         zips = self.filesystem.load_yaml(self.config.build.zips)
             
-        with self.database.inserter("codes") as ins:
+        with p.database.inserter("codes") as ins:
             for zip, city in zips.items():
 
                 ins.insert({
@@ -112,16 +110,16 @@ class Bundle(BuildBundle):
                 })
 
         cities = {row['key']:row['value'] for row in 
-                  self.database.query("SELECT * FROM codes WHERE `group` = 'jurisdiction' ")}
+                  p.database.query("SELECT * FROM codes WHERE `group` = 'jurisdiction' ")}
 
         incorp_cities = set(cities.values())
 
         zips =  {int(row['key']):row['value'] for row in 
-                  self.database.query("SELECT * FROM codes WHERE `group` = 'zips' ")}
+                  p.database.query("SELECT * FROM codes WHERE `group` = 'zips' ")}
 
         all_cities = set(zips.values())
 
-        with self.database.inserter("codes") as ins:
+        with p.database.inserter("codes") as ins:
             for c in all_cities:
                 ins.insert({
                   'group': 'places',
@@ -145,13 +143,6 @@ class Bundle(BuildBundle):
         p.database.query('CREATE INDEX IF NOT EXISTS intr_interid_idx ON intersections (interid);')       
 
 
-
-import sys
-
-if __name__ == '__main__':
-    import databundles.run
-      
-    databundles.run.run(sys.argv[1:], Bundle)
      
     
     

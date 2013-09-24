@@ -24,9 +24,9 @@ about:
     title: Roads and Addresses
 build:
     codes: meta/codes.yaml
-    schema_file: meta/schema.csv
     dependencies:
         neighborhoods: sangis.org-neighborhoods-orig-429e.neighborhoods
+    schema_file: meta/schema.csv
     sources:
         addresses: http://rdw.sandag.org/file_store/Address/Address_APN.zip
         intersections: http://rdw.sandag.org/file_store/Transportation/Roads_Intersection.zip
@@ -37,12 +37,13 @@ identity:
     dataset: streets
     id: a2MCi4
     name: sangis.org-streets-orig-429e
-    revision: 1
+    revision: 2
     source: sangis.org
     variation: orig
-    vid: a2MCi4/001
-    vname: sangis.org-streets-orig-429e-r1
+    vid: a2MCi4/002
+    vname: sangis.org-streets-orig-429e-r2
 partitions:
+- sangis.org-streets-orig-429e.codes
 - sangis.org-streets-orig-429e.addresses
 - sangis.org-streets-orig-429e.roads
 - sangis.org-streets-orig-429e.intersections
