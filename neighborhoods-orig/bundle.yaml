@@ -3,23 +3,24 @@ about:
     license: null
     rights: null
     subject: null
-    summary: null
+    summary: Boundaries for the communities defined in the local community plans,
+        and informally defined neighborhoods.
     tags: []
-    title: null
+    title: San Diego Communities and Neighborhoods
 contact_bundle:
     creator:
-        email: null
-        name: null
-        url: null
+        email: eric@sandiegodata.org
+        name: Eric Busboom
+        url: http://sandiegodata.org
     maintainer:
-        email: null
-        name: null
-        url: null
+        email: eric@sandiegodata.org
+        name: Eric Busboom
+        url: http://sandiegodata.org
 contact_source:
     creator:
-        email: null
-        name: null
-        url: null
+        email: webmaster@sangis.org
+        name: SANGIS
+        url: http://www.sangis.org/
     maintainer:
         email: null
         name: null
@@ -29,18 +30,22 @@ identity:
     btime: null
     dataset: neighborhoods
     id: d00P
-    revision: 1
+    revision: 2
     source: sangis.org
     subset: null
     type: null
     variation: orig
-    version: 0.1.1
+    version: 0.1.2
 names:
-    fqname: sangis.org-neighborhoods-orig-0.1.1~d00P001
+    fqname: sangis.org-neighborhoods-orig-0.1.2~d00P002
     name: sangis.org-neighborhoods-orig
-    vid: d00P001
-    vname: sangis.org-neighborhoods-orig-0.1.1
+    vid: d00P002
+    vname: sangis.org-neighborhoods-orig-0.1.2
+process: {}
 versions:
     1:
         description: null
         version: 0.1.1
+    2:
+        description: Using cached file.
+        version: 0.1.2

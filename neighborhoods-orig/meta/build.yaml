@@ -10,8 +10,9 @@ sources:
         description: null
         url: http://rdw.sandag.org/file_store/Community/Community_Plan_SD.zip
     sdneighborhoods:
-        description: null
-        url: http://rdw.sandag.org/file_store/Community/Neighborhoods_SD.ZIP
+        description: San Diego Neighborhoods. A cached version, since SANGIS seems
+            to have removed the file.
+        url: http://ds.civicknowledge.org/sangis.org/Community/Neighborhoods_SD.zip
 views:
     communities:
         communities_norm: SELECT OGC_FID as id, cpname as name, AsText(geometry) as
