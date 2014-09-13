@@ -11,8 +11,6 @@ sources:
     sd_councils:
         url: http://rdw.sandag.org/file_store/District/Council_Districts.zip
     sd_neighborhoods:
-        url: http://rdw.sandag.org/file_store/Community/Neighborhoods_SD.ZIP
-views:
-    places:
-        places_norm: SELECT code as id, name, AsText(geometry) as wkt, Area(geometry)
-            as area FROM places
+        description: San Diego Neighborhoods. A cached version, since SANGIS seems
+            to have removed the file.
+        url: http://ds.civicknowledge.org/sangis.org/Community/Neighborhoods_SD.zip

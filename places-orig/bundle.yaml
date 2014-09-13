@@ -63,18 +63,22 @@ identity:
     btime: null
     dataset: places
     id: d00R
-    revision: 1
+    revision: 2
     source: sangis.org
     subset: null
     type: null
     variation: orig
-    version: 0.1.1
+    version: 0.1.2
 names:
-    fqname: sangis.org-places-orig-0.1.1~d00R001
+    fqname: sangis.org-places-orig-0.1.2~d00R002
     name: sangis.org-places-orig
-    vid: d00R001
-    vname: sangis.org-places-orig-0.1.1
+    vid: d00R002
+    vname: sangis.org-places-orig-0.1.2
+process: {}
 versions:
     1:
         description: null
         version: 0.1.1
+    2:
+        description: Changed to using cached versino of nbeighborhoods file. 
+        version: 0.1.2
