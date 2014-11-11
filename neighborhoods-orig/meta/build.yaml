@@ -1,8 +1,4 @@
-build:
-    dependencies: {}
-    sources:
-        sdcommunities: http://rdw.sandag.org/file_store/Community/Community_Plan_SD.zip
-        sdneighborhoods: http://rdw.sandag.org/file_store/Community/Neighborhoods_SD.ZIP
+build: {}
 dependencies: {}
 extract: {}
 sources:
@@ -13,10 +9,4 @@ sources:
         description: San Diego Neighborhoods. A cached version, since SANGIS seems
             to have removed the file.
         url: http://ds.civicknowledge.org/sangis.org/Community/Neighborhoods_SD.zip
-views:
-    communities:
-        communities_norm: SELECT OGC_FID as id, cpname as name, AsText(geometry) as
-            wkt, Area(geometry) as area FROM communities
-    neighborhoods:
-        neighborhoods_norm: SELECT OGC_FID as id, name, AsText(geometry) as wkt, Area(geometry)
-            as area FROM neighborhoods
+

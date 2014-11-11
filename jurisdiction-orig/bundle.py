@@ -1,7 +1,7 @@
 '''
 '''
 
-from  ambry.bundle.geo import GeoBuildBundle
+from  ambry.bundle.loader import GeoBuildBundle
 
 class Bundle(GeoBuildBundle):
     ''' '''
