@@ -33,17 +33,17 @@ identity:
     btime: null
     dataset: jurisdiction
     id: d028
-    revision: 3
+    revision: 4
     source: sangis.org
     subset: null
     type: null
     variation: orig
-    version: 0.0.3
+    version: 0.0.4
 names:
-    fqname: sangis.org-jurisdiction-orig-0.0.3~d028003
+    fqname: sangis.org-jurisdiction-orig-0.0.4~d028004
     name: sangis.org-jurisdiction-orig
-    vid: d028003
-    vname: sangis.org-jurisdiction-orig-0.0.3
+    vid: d028004
+    vname: sangis.org-jurisdiction-orig-0.0.4
 process: {}
 versions:
     1:
@@ -58,3 +58,7 @@ versions:
         date: '2014-12-28T00:03:24.499358'
         description: Building with new geodatabase code
         version: 0.0.3
+    4:
+        date: '2015-01-06T20:36:40.354516'
+        description: Rebuild for new shapefile import code
+        version: 0.0.4
