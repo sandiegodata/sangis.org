@@ -3,13 +3,13 @@ about:
     - group1
     - group2
     license: other-open
-    rights: null
-    subject: null
-    summary: !include 'meta/about.description.md'
+    rights: public
+    subject: local geographyy
+    summary: Boundaries for cities, communities, police and fire, Indian reservations,
+        and Sub-regional areas.
     tags:
-    - tag1
-    - tag2
-    title: Bundle title
+    - null
+    title: SANGIS Jurisdiction Boundaries
 contact_bundle:
     creator:
         email: eric@sandiegodata.org
@@ -21,9 +21,9 @@ contact_bundle:
         url: null
 contact_source:
     creator:
-        email: null
-        name: null
-        url: https://civicknowledge.org
+        email: webmaster@sangis.org
+        name: San Diego Geographic Information Source
+        url: http://www.sangis.org/
     maintainer:
         email: null
         name: null
@@ -33,22 +33,28 @@ identity:
     btime: null
     dataset: jurisdiction
     id: d028
-    revision: 2
+    revision: 3
     source: sangis.org
     subset: null
     type: null
     variation: orig
-    version: 0.0.2
+    version: 0.0.3
 names:
-    fqname: sangis.org-jurisdiction-orig-0.0.2~d028002
+    fqname: sangis.org-jurisdiction-orig-0.0.3~d028003
     name: sangis.org-jurisdiction-orig
-    vid: d028002
-    vname: sangis.org-jurisdiction-orig-0.0.2
+    vid: d028003
+    vname: sangis.org-jurisdiction-orig-0.0.3
 process: {}
 versions:
     1:
+        date: null
         description: null
         version: null
     2:
+        date: null
         description: null
         version: 0.0.2
+    3:
+        date: '2014-12-28T00:03:24.499358'
+        description: Building with new geodatabase code
+        version: 0.0.3

@@ -1,10 +1,4 @@
-build:
-    dependencies: {}
-    sources:
-        municipal: http://rdw.sandag.org/file_store/Jurisdiction/Municipal_Boundaries.zip
-        publicsafety: http://rdw.sandag.org/file_store/Jurisdiction/Public_Safety_Jurisdictions.zip
-        reservations: http://rdw.sandag.org/file_store/Jurisdiction/Indian_Reservations.zip
-        sra: http://rdw.sandag.org/file_store/Jurisdiction/Subregional_Areas_2010.zip
+build: {}
 dependencies: {}
 extract: {}
 sources:
@@ -20,3 +14,4 @@ sources:
     sra:
         description: null
         url: http://rdw.sandag.org/file_store/Jurisdiction/Subregional_Areas_2010.zip
+views: {}

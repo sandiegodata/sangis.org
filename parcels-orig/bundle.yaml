@@ -29,19 +29,24 @@ identity:
     btime: null
     dataset: parcels
     id: d00Q
-    revision: 1
+    revision: 2
     source: sangis.org
     subset: null
     type: null
     variation: orig
-    version: 0.1.1
+    version: 0.1.2
 names:
-    fqname: sangis.org-parcels-orig-0.1.1~d00Q001
+    fqname: sangis.org-parcels-orig-0.1.2~d00Q002
     name: sangis.org-parcels-orig
-    vid: d00Q001
-    vname: sangis.org-parcels-orig-0.1.1
+    vid: d00Q002
+    vname: sangis.org-parcels-orig-0.1.2
 process: {}
 versions:
     1:
+        date: null
         description: null
         version: 0.1.1
+    2:
+        date: '2015-01-06T16:31:46.894064'
+        description: General dataset update
+        version: 0.1.2
