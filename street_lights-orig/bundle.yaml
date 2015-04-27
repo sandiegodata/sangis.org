@@ -1,7 +1,10 @@
 about:
+    access: public
+    grain: null
     groups: []
-    license: other-open
-    rights: null
+    license: http://rdw.sandag.org/
+    rights: public
+    space: San Diego
     subject: null
     summary: 'Street Light Pole locations used for Street Division GIS/SAP WorkManagement
         System. The geographic extent is the City of San Diego. Users must understand
@@ -12,6 +15,7 @@ about:
     tags:
     - government
     - gov-infrastructure
+    time: null
     title: San Diego Street Light Locations
 contact_bundle:
     creator:
@@ -68,5 +72,6 @@ names:
 process: {}
 versions:
     1:
+        date: null
         description: null
         version: 0.1.1

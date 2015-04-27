@@ -1,11 +1,15 @@
 about:
+    access: public
+    grain: null
     groups: []
-    license: other-open
-    rights: null
+    license: http://rdw.sandag.org/
+    rights: public
+    space: San Diego
     subject: null
     summary: Point locations of business sites. Published Jan 2013.
     tags:
     - economy
+    time: null
     title: Business Locations
 contact_bundle:
     creator:
@@ -61,5 +65,6 @@ names:
 process: {}
 versions:
     1:
+        date: null
         description: null
         version: 0.1.1

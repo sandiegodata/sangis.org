@@ -1,10 +1,14 @@
 about:
+    access: public
+    grain: null
     groups: []
-    license: null
-    rights: null
+    license: http://rdw.sandag.org/
+    rights: public
+    space: San Diego
     subject: null
     summary: null
     tags: []
+    time: null
     title: null
 contact_bundle:
     creator:

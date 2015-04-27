@@ -1,11 +1,15 @@
 about:
+    access: public
+    grain: null
     groups: []
-    license: null
-    rights: null
+    license: http://rdw.sandag.org/
+    rights: public
+    space: San Diego
     subject: null
     summary: Boundaries for the communities defined in the local community plans,
         and informally defined neighborhoods.
     tags: []
+    time: null
     title: San Diego Communities and Neighborhoods
 contact_bundle:
     creator:
@@ -44,8 +48,10 @@ names:
 process: {}
 versions:
     1:
+        date: null
         description: null
         version: 0.1.1
     2:
+        date: null
         description: Using cached file.
         version: 0.1.2

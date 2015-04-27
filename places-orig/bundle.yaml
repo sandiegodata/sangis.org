@@ -1,12 +1,16 @@
 about:
+    access: public
+    grain: null
     groups: []
-    license: other-open
-    rights: null
+    license: http://rdw.sandag.org/
+    rights: public
+    space: San Diego
     subject: null
     summary: !include 'config/about.description.md'
     tags:
     - government
     - gov-infrastructure
+    time: null
     title: Municipal Boundaries
 contact_bundle:
     creator:
@@ -77,8 +81,10 @@ names:
 process: {}
 versions:
     1:
+        date: null
         description: null
         version: 0.1.1
     2:
-        description: Changed to using cached versino of nbeighborhoods file. 
+        date: null
+        description: Changed to using cached versino of nbeighborhoods file.
         version: 0.1.2

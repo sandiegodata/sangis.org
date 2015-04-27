@@ -1,13 +1,17 @@
 about:
+    access: public
+    grain: null
     groups: []
-    license: other-open
-    rights: null
+    license: http://rdw.sandag.org/
+    rights: public
+    space: San Diego
     subject: San Diego; Transportation
     summary: Conversions to database format for the roads, intersections and addresses
         shape files for San Diego County.
     tags:
     - government
     - gov-infrastructure
+    time: null
     title: San Diego Roads and Addresses
 contact_bundle:
     creator:
@@ -68,11 +72,14 @@ names:
 process: {}
 versions:
     1:
+        date: null
         description: Initial Revision
         version: 0.1.1
     2:
+        date: null
         description: null
         version: null
     3:
+        date: null
         description: Updating metdata Structure
         version: 0.1.3

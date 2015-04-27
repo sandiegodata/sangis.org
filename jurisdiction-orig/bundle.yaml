@@ -1,14 +1,18 @@
 about:
+    access: public
+    grain: null
     groups:
     - group1
     - group2
-    license: other-open
+    license: http://rdw.sandag.org/
     rights: public
+    space: San Diego
     subject: local geographyy
     summary: Boundaries for cities, communities, police and fire, Indian reservations,
         and Sub-regional areas.
     tags:
     - null
+    time: null
     title: SANGIS Jurisdiction Boundaries
 contact_bundle:
     creator:
